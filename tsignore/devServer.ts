@@ -1,7 +1,7 @@
 import http from "http"
 import { join } from "path"
-import parseForm from "serverless-form-parser"
 
+import parseForm from "../formParser"
 import stack from "./stack"
 
 const port = 4000

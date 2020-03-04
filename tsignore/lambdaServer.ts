@@ -3,7 +3,7 @@ import {
   APIGatewayProxyEvent,
   APIGatewayProxyResult,
 } from "aws-lambda"
-import parseForm from "serverless-form-parser"
+import parseForm from "../formParser"
 
 import stack from "./stack"
 
