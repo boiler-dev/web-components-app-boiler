@@ -1,6 +1,5 @@
 import render from "../../render"
-import {
-  assetsForClient,
+import renderServer, {
   RenderRequest,
 } from "../../renderServer"
 import ssr from "../../ssr"
@@ -32,9 +31,9 @@ export class StackComponent {
 
   async element({ path }: RenderRequest): Promise<Element> {
     const [components, libs, models] = await Promise.all([
-      assetsForClient(this.components),
-      assetsForClient(this.libs),
-      assetsForClient(this.models),
+      renderServer.assetsForClient(this.components),
+      renderServer.assetsForClient(this.libs),
+      renderServer.assetsForClient(this.models),
     ])
 
     return (
