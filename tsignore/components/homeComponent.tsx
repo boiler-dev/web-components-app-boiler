@@ -1,6 +1,6 @@
-import loaded from "../loaded"
-import render from "../render"
-import { RenderRequest } from "../renderServer"
+import loaded from "../../loaded"
+import render from "../../render"
+import { RenderRequest } from "../../renderServer"
 
 export class HomeComponent {
   browser: boolean = null

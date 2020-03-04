@@ -1,9 +1,9 @@
-import loaded from "../loaded"
-import render from "../render"
+import loaded from "../../loaded"
+import render from "../../render"
 import {
   RenderRequest,
   RenderResponse,
-} from "../renderServer"
+} from "../../renderServer"
 
 export class NotFoundComponent {
   browser: boolean = null
