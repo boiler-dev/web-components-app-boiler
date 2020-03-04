@@ -5,7 +5,9 @@ import {
   PromptBoiler,
 } from "boiler-dev"
 
-export const install: InstallBoiler = async () => {
+export const install: InstallBoiler = async ({
+  cwdPath,
+}) => {
   const actions = []
 
   actions.push({
@@ -16,7 +18,18 @@ export const install: InstallBoiler = async () => {
   actions.push({
     action: "npmInstall",
     dev: true,
-    source: ["aws-lambda"],
+    source: ["aws-lambda", "ts-node-dev"],
+  })
+
+  actions.push({
+    action: "merge",
+    path: join(cwdPath, "package.json"),
+    source: {
+      scripts: {
+        start:
+          "npx ts-node-dev --respawn --transpileOnly --notify false ./src/web/devServer",
+      },
+    },
   })
 
   return actions
