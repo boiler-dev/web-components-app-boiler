@@ -1,40 +1,67 @@
+import { join } from "path"
 import {
+  GenerateBoiler,
   InstallBoiler,
   PromptBoiler,
-  GenerateBoiler,
-  UninstallBoiler,
 } from "boiler-dev"
 
-export const install: InstallBoiler = async ({
-  cwdPath,
-  files,
-}) => {
+export const install: InstallBoiler = async () => {
   const actions = []
+
+  actions.push({
+    action: "npmInstall",
+    source: ["serverless-form-parser", "undom"],
+  })
+
+  actions.push({
+    action: "npmInstall",
+    dev: true,
+    source: ["aws-lambda"],
+  })
+
   return actions
 }
 
-export const prompt: PromptBoiler = async ({
-  cwdPath,
-  files,
-}) => {
-  const prompts = []
-  return prompts
+export const prompt: PromptBoiler = async () => {
+  return [
+    {
+      type: "input",
+      name: "appDirName",
+      message: "app directory name?",
+    },
+  ]
 }
 
 export const generate: GenerateBoiler = async ({
-  cwdPath,
   answers,
+  cwdPath,
   files,
 }) => {
   const actions = []
-  return actions
-}
 
-export const uninstall: UninstallBoiler = async ({
-  cwdPath,
-  answers,
-  files,
-}) => {
-  const actions = []
+  const { appDirName } = answers
+
+  for (const file of files) {
+    const { name, path, source } = file
+
+    if (path.includes("/components/")) {
+      actions.push({
+        action: "write",
+        path: join(
+          cwdPath,
+          `src/${appDirName}/components`,
+          name
+        ),
+        source,
+      })
+    } else {
+      actions.push({
+        action: "write",
+        path: join(cwdPath, `src/${appDirName}`, name),
+        source,
+      })
+    }
+  }
+
   return actions
 }
