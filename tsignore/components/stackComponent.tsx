@@ -12,19 +12,18 @@ export class StackComponent {
   ssr: typeof ssr = null
 
   libs = {
-    app: "./dist",
-    fetch: "./dist",
-    loaded: "./dist",
-    logger: "./dist",
-    patch: "./dist",
-    render: "./dist",
-    renderClient: "./dist",
-    router: "./dist",
-    tinyId: "./dist",
+    app: "./dist/src-esm/web",
+    loaded: "./dist/src-esm",
+    logger: "./dist/src-esm",
+    patch: "./dist/src-esm",
+    render: "./dist/src-esm",
+    renderClient: "./dist/src-esm",
+    router: "./dist/src-esm",
+    tinyId: "./dist/src-esm",
   }
 
   components = {
-    homeComponent: "./dist",
+    homeComponent: "./dist/src-esm/web",
   }
 
   models = {}

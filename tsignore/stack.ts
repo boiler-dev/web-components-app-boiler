@@ -13,6 +13,7 @@ import { App } from "./app"
 import { BootstrapComponent } from "./components/bootstrapComponent"
 import { HeadComponent } from "./components/headComponent"
 import { HomeComponent } from "./components/homeComponent"
+import { NotFoundComponent } from "./components/notFoundComponent"
 import { StackComponent } from "./components/stackComponent"
 
 export default ():
@@ -34,6 +35,7 @@ export default ():
     bootstrapComponent: new BootstrapComponent(),
     headComponent: new HeadComponent(),
     homeComponent: new HomeComponent(),
+    notFoundComponent: new NotFoundComponent(),
     stackComponent: new StackComponent(),
   })
 }

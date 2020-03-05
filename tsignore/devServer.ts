@@ -10,7 +10,7 @@ http
   .createServer(async (req, res) => {
     const root = join(
       __dirname,
-      __dirname.includes("/dist/") ? "../../" : "../"
+      __dirname.includes("/dist/") ? "../../../" : "../../"
     )
 
     const { renderServer } = await stack()
