@@ -3,14 +3,14 @@ import {
   APIGatewayProxyEvent,
   APIGatewayProxyResult,
 } from "aws-lambda"
-import parseForm from "../formParser"
 
+import parseForm from "../formParser"
 import stack from "./stack"
 
 export async function lambdaServer(
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> {
-  const root = join(__dirname, "../../")
+  const root = join(__dirname, "../../../")
   const parsedForm = await parseForm.fromApiGateway(event)
 
   const { renderServer } = await stack()
