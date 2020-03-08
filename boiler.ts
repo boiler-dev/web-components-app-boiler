@@ -41,6 +41,7 @@ export const prompt: PromptBoiler = async () => {
       type: "input",
       name: "appDirName",
       message: "app directory name?",
+      default: "web",
     },
   ]
 }
