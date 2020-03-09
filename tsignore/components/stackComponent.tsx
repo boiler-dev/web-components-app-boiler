@@ -24,6 +24,7 @@ export class StackComponent {
 
   components = {
     homeComponent: "./dist/src-esm/web",
+    notFoundComponent: "./dist/src-esm/web",
   }
 
   models = {}
