@@ -1,9 +1,6 @@
-import { join } from "path"
 import { ActionBoiler, PromptBoiler } from "boiler-dev"
 
-export const install: ActionBoiler = async ({
-  cwdPath,
-}) => {
+export const install: ActionBoiler = async () => {
   const actions = []
 
   actions.push({
@@ -19,7 +16,7 @@ export const install: ActionBoiler = async ({
 
   actions.push({
     action: "merge",
-    path: join(cwdPath, "package.json"),
+    path: "package.json",
     source: {
       scripts: {
         start:
@@ -44,11 +41,9 @@ export const prompt: PromptBoiler = async () => {
 
 export const generate: ActionBoiler = async ({
   answers,
-  cwdPath,
   files,
 }) => {
   const actions = []
-
   const { appDirName } = answers
 
   for (const file of files) {
@@ -57,17 +52,13 @@ export const generate: ActionBoiler = async ({
     if (path.includes("/components/")) {
       actions.push({
         action: "write",
-        path: join(
-          cwdPath,
-          `src/${appDirName}/components`,
-          name
-        ),
+        path: `src/${appDirName}/components`,
         source,
       })
     } else {
       actions.push({
         action: "write",
-        path: join(cwdPath, `src/${appDirName}`, name),
+        path: `src/${appDirName}/${name}`,
         source,
       })
     }
