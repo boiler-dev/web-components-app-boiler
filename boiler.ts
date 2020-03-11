@@ -52,7 +52,7 @@ export const generate: ActionBoiler = async ({
     if (path.includes("/components/")) {
       actions.push({
         action: "write",
-        path: `src/${appDirName}/components`,
+        path: `src/${appDirName}/components/${name}`,
         source,
       })
     } else {
