@@ -47,19 +47,19 @@ export const generate: ActionBoiler = async ({
   const { appDirName } = answers
 
   for (const file of files) {
-    const { name, path } = file
+    const { name, sourcePath } = file
 
-    if (path.includes("/components/")) {
+    if (sourcePath.includes("/components/")) {
       actions.push({
         action: "write",
         path: `src/${appDirName}/components/${name}`,
-        sourcePath: path,
+        sourcePath,
       })
     } else {
       actions.push({
         action: "write",
         path: `src/${appDirName}/${name}`,
-        sourcePath: path,
+        sourcePath,
       })
     }
   }
