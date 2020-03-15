@@ -1,6 +1,25 @@
 import { ActionBoiler, PromptBoiler } from "boiler-dev"
 
-export const install: ActionBoiler = async () => {
+export const prompt: PromptBoiler = async () => {
+  return [
+    {
+      type: "input",
+      name: "appDirName",
+      message: "app directory name?",
+      default: "web",
+    },
+    {
+      type: "confirm",
+      name: "deployWithServerless",
+      message: "deploy with serverless?",
+      default: true,
+    },
+  ]
+}
+
+export const install: ActionBoiler = async ({
+  answers,
+}) => {
   const actions = []
 
   actions.push({
@@ -25,18 +44,17 @@ export const install: ActionBoiler = async () => {
     },
   })
 
-  return actions
-}
+  if (answers.deployWithServerless) {
+    actions.push({
+      action: "generate",
+      source: [
+        "git@github.com:boiler-dev/deploy-boiler.git",
+        "git@github.com:boiler-dev/web-components-serverless-boiler.git",
+      ],
+    })
+  }
 
-export const prompt: PromptBoiler = async () => {
-  return [
-    {
-      type: "input",
-      name: "appDirName",
-      message: "app directory name?",
-      default: "web",
-    },
-  ]
+  return actions
 }
 
 export const generate: ActionBoiler = async ({
