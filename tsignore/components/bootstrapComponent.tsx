@@ -7,6 +7,7 @@ export class BootstrapComponent {
 
   async element(req: RenderRequest): Promise<Element> {
     window["bootstrap"] = {
+      stage: process.env.STAGE,
       user: req.user,
     }
 
