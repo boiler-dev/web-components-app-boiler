@@ -13,6 +13,7 @@ export class StackComponent {
 
   libs = {
     app: "./dist/src-esm/web",
+    fetch: "./node_modules/fetch-mjs/dist/mjs/fetch*.mjs",
     loaded: "./dist/src-esm",
     logger: "./dist/src-esm",
     patch: "./dist/src-esm",

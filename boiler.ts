@@ -24,7 +24,11 @@ export const install: ActionBoiler = async ({
 
   actions.push({
     action: "npmInstall",
-    source: ["serverless-form-parser", "undom"],
+    source: [
+      "fetch-mjs",
+      "serverless-form-parser",
+      "undom",
+    ],
   })
 
   actions.push({
