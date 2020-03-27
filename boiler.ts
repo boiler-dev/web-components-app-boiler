@@ -58,8 +58,7 @@ export const generate: ActionBoiler = async ({
     path: "package.json",
     source: {
       scripts: {
-        start:
-          "npx ts-node-dev --respawn --transpileOnly --notify false ./src/web/devServer",
+        [`start:${appDirName}`]: `npx ts-node-dev --respawn --transpileOnly --notify false ./src/${appDirName}/devServer`,
       },
     },
   })
