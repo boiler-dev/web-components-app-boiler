@@ -33,17 +33,6 @@ export const install: ActionBoiler = async ({
     source: ["aws-lambda", "ts-node-dev"],
   })
 
-  actions.push({
-    action: "merge",
-    path: "package.json",
-    source: {
-      scripts: {
-        start:
-          "npx ts-node-dev --respawn --transpileOnly --notify false ./src/web/devServer",
-      },
-    },
-  })
-
   if (answers.deployWithServerless) {
     actions.push({
       action: "generate",
@@ -63,6 +52,17 @@ export const generate: ActionBoiler = async ({
 }) => {
   const actions = []
   const { appDirName } = answers
+
+  actions.push({
+    action: "merge",
+    path: "package.json",
+    source: {
+      scripts: {
+        start:
+          "npx ts-node-dev --respawn --transpileOnly --notify false ./src/web/devServer",
+      },
+    },
+  })
 
   for (const file of files) {
     const { name, sourcePath } = file
